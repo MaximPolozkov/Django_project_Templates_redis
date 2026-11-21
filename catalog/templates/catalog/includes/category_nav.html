@@ -1,0 +1,9 @@
+{% if categories %}
+<div class="d-flex flex-wrap gap-2 mb-4">
+    <a href="{% url 'catalog:home' %}" class="btn btn-sm {% if not current_category %}btn-dark{% else %}btn-outline-dark{% endif %}">Все</a>
+    {% for item in categories %}
+        <a href="{% url 'catalog:category_products' item.pk %}"
+           class="btn btn-sm {% if current_category and current_category.pk == item.pk %}btn-dark{% else %}btn-outline-dark{% endif %}">{{ item.name }}</a>
+    {% endfor %}
+</div>
+{% endif %}
